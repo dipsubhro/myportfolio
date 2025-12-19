@@ -126,8 +126,14 @@ const Projects = () => {
 
                   <CardFooter className="flex justify-between items-center mt-auto">
                     <div className="flex space-x-2">
-                      {project.liveLink && (
-                        <Button asChild size="icon" variant="default" className="h-8 w-8">
+                      <Button
+                        asChild={!!project.liveLink}
+                        size="icon"
+                        variant="default"
+                        className="h-8 w-8"
+                        disabled={!project.liveLink}
+                      >
+                        {project.liveLink ? (
                           <a
                             href={project.liveLink}
                             target="_blank"
@@ -136,8 +142,10 @@ const Projects = () => {
                           >
                             <ExternalLink className="h-4 w-4" />
                           </a>
-                        </Button>
-                      )}
+                        ) : (
+                          <ExternalLink className="h-4 w-4" />
+                        )}
+                      </Button>
                       {project.githubLink && (
                         <Button asChild size="icon" variant="secondary" className="h-8 w-8">
                           <a
