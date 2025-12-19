@@ -1,6 +1,7 @@
 
 import { Github, Linkedin, Instagram } from "lucide-react";
 import { X } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const Hero = () => {
   return (
@@ -20,8 +21,8 @@ const Hero = () => {
           </div>
         </div>
 
-        <h1 className="text-4xl lg:text-6xl font-light text-foreground mb-6 tracking-tight">
-          Hi, I'm <span className="text-blue-600 font-medium">Subhro</span>
+        <h1 className="text-4xl lg:text-6xl font-bold text-foreground mb-6 tracking-tight">
+          Hi, I'm <span className="text-foreground">Subhro</span>
         </h1>
 
         <p className="text-lg lg:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed">
@@ -64,20 +65,29 @@ const Hero = () => {
         </div>
 
         <div className="flex justify-center gap-4">
-          <a
-            href="#projects"
-            className="inline-block w-48 text-center px-8 py-3 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
+          <Button
+            asChild
+            size="lg"
+            className="w-48 rounded-full text-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 bg-blue-600 hover:bg-blue-700 text-white"
           >
-            View My Work
-          </a>
-          <a
-            href="/resume.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block w-48 text-center px-8 py-3 bg-secondary text-foreground rounded-full hover:bg-secondary/80 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl border border-border"
+            <a href="#projects">
+              View My Work
+            </a>
+          </Button>
+          <Button
+            asChild
+            variant="secondary"
+            size="lg"
+            className="w-48 rounded-full text-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 border border-border"
           >
-            Resume
-          </a>
+            <a
+              href="/resume4subhro2.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Resume
+            </a>
+          </Button>
         </div>
       </div>
     </section>

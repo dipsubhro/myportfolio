@@ -2,11 +2,13 @@
 import { Github, Linkedin, Instagram } from "lucide-react";
 import { X } from "lucide-react";
 
+import { Button } from "@/components/ui/button";
+
 const Contact = () => {
   return (
     <section className="py-20 px-6 lg:px-8 bg-background">
       <div className="max-w-4xl mx-auto text-center">
-        <h2 className="text-3xl lg:text-4xl font-light text-foreground mb-6">
+        <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-6 tracking-tight">
           Let's Work Together
         </h2>
         <p className="text-lg text-muted-foreground mb-12 max-w-2xl mx-auto">
@@ -15,12 +17,17 @@ const Contact = () => {
         </p>
 
         <div className="mb-12">
-          <a
-            href="https://mail.google.com/mail/?view=cm&fs=1&to=sbhrdpsinha@gmail.com"
-            className="inline-block px-8 py-4 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl text-lg font-medium"
+          <Button
+            asChild
+            size="lg"
+            className="rounded-full text-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 bg-blue-600 hover:bg-blue-700 text-white px-8 py-6 h-auto"
           >
-            Get In Touch
-          </a>
+            <a
+              href="https://mail.google.com/mail/?view=cm&fs=1&to=sbhrdpsinha@gmail.com"
+            >
+              Get In Touch
+            </a>
+          </Button>
         </div>
         {/*         
         <div className="flex justify-center space-x-8 mb-12">
