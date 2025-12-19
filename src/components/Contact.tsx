@@ -4,16 +4,16 @@ import { X } from "lucide-react";
 
 const Contact = () => {
   return (
-    <section className="py-20 px-6 lg:px-8 bg-gradient-to-br from-blue-50 to-blue-100">
+    <section className="py-20 px-6 lg:px-8 bg-background">
       <div className="max-w-4xl mx-auto text-center">
-        <h2 className="text-3xl lg:text-4xl font-light text-gray-800 mb-6">
+        <h2 className="text-3xl lg:text-4xl font-light text-foreground mb-6">
           Let's Work Together
         </h2>
-        <p className="text-lg text-gray-600 mb-12 max-w-2xl mx-auto">
-          I'm always interested in new opportunities and exciting projects. 
+        <p className="text-lg text-muted-foreground mb-12 max-w-2xl mx-auto">
+          I'm always interested in new opportunities and exciting projects.
           Feel free to reach out if you'd like to collaborate or just say hello!
         </p>
-        
+
         <div className="mb-12">
           <a
             href="https://mail.google.com/mail/?view=cm&fs=1&to=sbhrdpsinha@gmail.com"
@@ -22,7 +22,7 @@ const Contact = () => {
             Get In Touch
           </a>
         </div>
-{/*         
+        {/*         
         <div className="flex justify-center space-x-8 mb-12">
           <a
             href="https://github.com"
