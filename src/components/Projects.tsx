@@ -8,6 +8,17 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+
 import AutoScroll from "embla-carousel-auto-scroll";
 
 const Projects = () => {
@@ -56,15 +67,6 @@ const Projects = () => {
       liveLink: "https://www.npmjs.com/package/boiling-code",
       githubLink: "https://github.com/dipsubhro/cli-tool-boilerplate",
       demoLink: "https://x.com/Dipsubhro12/status/1921658218062712901"
-    },
-    {
-      title: "Presento",
-      description: "An AI-powered presentation creator that generates slides based on user-provided context. Currently in development.",
-      image: "/presento.png",
-      technologies: ["Next.js"],
-      liveLink: "",
-      githubLink: "",
-      demoLink: ""
     }
   ];
 
@@ -95,69 +97,62 @@ const Projects = () => {
           <CarouselContent>
             {projects.map((project, index) => (
               <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3 p-4">
-                <div
-                  className="bg-card rounded-xl shadow-md hover:shadow-xl transition-all duration-500 overflow-hidden group hover:scale-105 border border-border h-full flex flex-col"
-                >
-                  <div className="relative overflow-hidden shrink-0">
+                <Card className="h-full flex flex-col overflow-hidden hover:shadow-xl transition-all duration-300 hover:scale-105 border-border group">
+                  <div className="relative overflow-hidden shrink-0 h-48">
                     <img
                       src={project.image}
                       alt={project.title}
-                      className="w-full h-48 object-cover transition-transform duration-700 group-hover:scale-110"
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-blue-900/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                   </div>
 
-                  <div className="p-6 flex flex-col flex-grow">
-                    <h3 className="text-xl font-medium text-foreground mb-3">
-                      {project.title}
-                    </h3>
-                    <p className="text-muted-foreground mb-4 text-sm leading-relaxed flex-grow">
+                  <CardHeader>
+                    <CardTitle className="text-xl font-bold">{project.title}</CardTitle>
+                    <CardDescription className="line-clamp-3">
                       {project.description}
-                    </p>
+                    </CardDescription>
+                  </CardHeader>
 
-                    <div className="flex flex-wrap gap-2 mb-4">
+                  <CardContent className="flex-grow">
+                    <div className="flex flex-wrap gap-2">
                       {project.technologies.map((tech, techIndex) => (
-                        <span
-                          key={techIndex}
-                          className="px-3 py-1 bg-secondary text-secondary-foreground text-xs rounded-full border border-border"
-                        >
+                        <Badge key={techIndex} variant="secondary">
                           {tech}
-                        </span>
+                        </Badge>
                       ))}
                     </div>
+                  </CardContent>
 
-                    <div className="flex justify-between items-center mt-auto">
-                      <div className="flex space-x-3">
-                        <a
-                          href={project.liveLink}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="p-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition-colors duration-300 group/btn"
-                          title="Live Site"
-                        >
-                          <ExternalLink className="w-4 h-4 group-hover/btn:scale-110 transition-transform duration-300" />
-                        </a>
-                        <a
-                          href={project.githubLink}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="p-2 rounded-lg bg-secondary text-foreground hover:bg-secondary/80 transition-colors duration-300 group/btn"
-                          title="GitHub"
-                        >
-                          <Github className="w-4 h-4 group-hover/btn:scale-110 transition-transform duration-300" />
-                        </a>
-                      </div>
-                      <a
-                        href={project.demoLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-blue-600 hover:text-blue-700 text-sm font-medium transition-colors duration-300 hover:underline"
-                      >
-                        Demo
-                      </a>
+                  <CardFooter className="flex justify-between items-center mt-auto">
+                    <div className="flex space-x-2">
+                      {project.liveLink && (
+                        <Button asChild size="icon" variant="default" className="h-8 w-8">
+                          <a
+                            href={project.liveLink}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            title="Live Site"
+                          >
+                            <ExternalLink className="h-4 w-4" />
+                          </a>
+                        </Button>
+                      )}
+                      {project.githubLink && (
+                        <Button asChild size="icon" variant="secondary" className="h-8 w-8">
+                          <a
+                            href={project.githubLink}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            title="GitHub"
+                          >
+                            <Github className="h-4 w-4" />
+                          </a>
+                        </Button>
+                      )}
                     </div>
-                  </div>
-                </div>
+                  </CardFooter>
+                </Card>
               </CarouselItem>
             ))}
           </CarouselContent>

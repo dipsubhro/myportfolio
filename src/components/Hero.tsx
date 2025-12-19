@@ -25,8 +25,8 @@ const Hero = () => {
           Hi, I'm <span className="text-foreground">Subhro</span>
         </h1>
 
-        <p className="text-lg lg:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed">
-          I'm a full-stack developer who builds smart, user-focused web apps using modern technologies. From AI tools to full-featured platforms, I turn ideas into fast, functional, and scalable solutions.
+        <p className="text-lg lg:text-xl text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed">
+          I am a Full-stack developer building scalable web applications with a focus on cloud-native AWS deployments. My expertise lies in designing high-performance, concurrent backend services that drive fast and functional digital solutions.
         </p>
 
         <div className="flex justify-center space-x-6 mb-12">
