@@ -9,15 +9,13 @@ const Hero = () => {
       <div className="max-w-4xl mx-auto text-center">
         <div className="mb-8 flex justify-center">
           <div className="relative group">
-            <div className="w-32 h-32 lg:w-40 lg:h-40 rounded-full overflow-hidden border-4 border-blue-100 shadow-lg transition-all duration-500 group-hover:scale-110 group-hover:shadow-2xl group-hover:border-blue-200">
+            <div className="w-40 h-40 lg:w-52 lg:h-52 rounded-full overflow-hidden border-4 border-muted shadow-[0_0_20px_rgba(255,255,255,0.3)] transition-all duration-300 group-hover:scale-105 group-hover:border-foreground/20 group-hover:shadow-[0_0_25px_rgba(255,255,255,0.5)] active:scale-110 active:shadow-[0_0_35px_rgba(255,255,255,0.7)]">
               <img
                 src="/me.jpg"
                 alt="Profile"
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-125 group-hover:rotate-3"
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-blue-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             </div>
-            <div className="absolute -inset-1 bg-gradient-to-r from-blue-200 to-blue-300 rounded-full opacity-0 group-hover:opacity-20 transition-opacity duration-500 -z-10"></div>
           </div>
         </div>
 
