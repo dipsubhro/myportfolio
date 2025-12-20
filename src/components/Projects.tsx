@@ -71,7 +71,7 @@ const Projects = () => {
   ];
 
   return (
-    <section id="projects" className="py-20 px-6 lg:px-8">
+    <section id="projects" className="py-12 md:py-20 px-6 lg:px-8">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-6 tracking-tight">
@@ -96,7 +96,7 @@ const Projects = () => {
         >
           <CarouselContent>
             {projects.map((project, index) => (
-              <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3 p-4">
+              <CarouselItem key={index} className="basis-full md:basis-1/2 lg:basis-1/3 p-4">
                 <Card className="h-full flex flex-col overflow-hidden hover:shadow-xl transition-all duration-300 hover:scale-105 border-border group">
                   <div className="relative overflow-hidden shrink-0 h-48">
                     <img

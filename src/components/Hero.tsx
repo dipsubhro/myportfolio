@@ -62,7 +62,7 @@ const Hero = () => {
           </a>
         </div>
 
-        <div className="flex justify-center gap-4">
+        <div className="flex flex-wrap justify-center gap-4">
           <Button
             asChild
             size="lg"
