@@ -96,7 +96,7 @@ const Projects = () => {
         >
           <CarouselContent>
             {projects.map((project, index) => (
-              <CarouselItem key={index} className="basis-full md:basis-1/2 lg:basis-1/3 p-4">
+              <CarouselItem key={index} className="basis-[85%] md:basis-1/2 lg:basis-1/3 p-4">
                 <Card className="h-full flex flex-col overflow-hidden hover:shadow-xl transition-all duration-300 hover:scale-105 border-border group">
                   <div className="relative overflow-hidden shrink-0 h-48">
                     <img

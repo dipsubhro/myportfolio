@@ -38,7 +38,7 @@ const TechStack = () => {
                                 <Badge
                                     key={techIndex}
                                     variant="secondary"
-                                    className="text-md py-3 px-6 hover:bg-primary hover:text-primary-foreground transition-colors cursor-default"
+                                    className="text-sm py-2 px-4 md:text-md md:py-3 md:px-6 hover:bg-primary hover:text-primary-foreground transition-colors cursor-default"
                                 >
                                     {tech}
                                 </Badge>
