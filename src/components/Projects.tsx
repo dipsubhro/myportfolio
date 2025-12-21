@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { ExternalLink, Github } from "lucide-react";
 
 import {
@@ -6,6 +7,7 @@ import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
+  type CarouselApi,
 } from "@/components/ui/carousel";
 
 import {
@@ -70,6 +72,8 @@ const Projects = () => {
     }
   ];
 
+  const [api, setApi] = useState<CarouselApi>();
+
   return (
     <section id="projects" className="py-12 md:py-20 px-6 lg:px-8">
       <div className="max-w-6xl mx-auto">
@@ -83,16 +87,20 @@ const Projects = () => {
         </div>
 
         <Carousel
+          setApi={setApi}
           opts={{
             loop: true,
           }}
           plugins={[
             AutoScroll({
               speed: 1,
-              stopOnInteraction: false,
+              stopOnInteraction: true,
+              stopOnMouseEnter: true,
             }),
           ]}
           className="w-full max-w-5xl mx-auto"
+          onMouseEnter={() => api?.plugins().autoScroll.stop()}
+          onMouseLeave={() => api?.plugins().autoScroll.play()}
         >
           <CarouselContent>
             {projects.map((project, index) => (
@@ -164,8 +172,8 @@ const Projects = () => {
               </CarouselItem>
             ))}
           </CarouselContent>
-          <CarouselPrevious className="hidden md:flex" />
-          <CarouselNext className="hidden md:flex" />
+          <CarouselPrevious className="hidden md:flex z-50" />
+          <CarouselNext className="hidden md:flex z-50" />
         </Carousel>
       </div>
     </section>
