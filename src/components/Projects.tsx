@@ -69,8 +69,18 @@ const Projects = () => {
       liveLink: "https://www.npmjs.com/package/boiling-code",
       githubLink: "https://github.com/dipsubhro/cli-tool-boilerplate",
       demoLink: "https://x.com/Dipsubhro12/status/1921658218062712901"
+    },
+    {
+      title: "AI Image Rekognizer",
+      description: "An AI-powered image recognition application built with AWS Lambda and Terraform.",
+      image: "/rekognizer.png",
+      technologies: ["React", "AWS Lambda", "Terraform"],
+      liveLink: "https://rekognizer.netlify.app",
+      githubLink: "https://github.com/dipsubhro/rekognizer",
+      demoLink: ""
     }
   ];
+  // Trigger HMR update
 
   const [api, setApi] = useState<CarouselApi>();
 
