@@ -1,93 +1,17 @@
-import { useState } from "react";
 import { ExternalLink, Github } from "lucide-react";
-
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-  type CarouselApi,
-} from "@/components/ui/carousel";
-
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Carousel, Card } from "@/components/ui/apple-cards-carousel";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 
-import AutoScroll from "embla-carousel-auto-scroll";
-
 const Projects = () => {
-  const projects = [
-    {
-      title: "SubTerm",
-      description: "A web-based IDE featuring a text editor, file browser, and terminal—running on your own virtual machine",
-      image: "/subterm.png",
-      technologies: ["Vite", "AceEditor", "Node-pty", "EC2"],
-      liveLink: "https://subterm.duckdns.org",
-      githubLink: "https://github.com/dipsubhro/subterm-frontend",
-      demoLink: "https://x.com/Dipsubhro12/status/1926130395793297551"
-    },
-    {
-      title: "PDFChat-AI",
-      description: "A web app to extract content from your PDFs and chat with AI for context-aware insights tailored to your documents.",
-      image: "/pdfChat.png",
-      technologies: ["LangChain", "Qdrant", "BullMQ", "Next.js"],
-      liveLink: "https://pdf-ai-chi.vercel.app/",
-      githubLink: "https://github.com/dipsubhro/pdf-AI",
-      demoLink: "https://x.com/Dipsubhro12/status/1920925360847229382"
-    },
-    {
-      title: "Reseller",
-      description: "A complete Ecom platform where users can list their products for reselling, and others can purchase them through a shared link.",
-      image: "/ecom.png",
-      technologies: ["Next.js", "MongoDB", "Clerk"],
-      liveLink: "",
-      githubLink: "https://github.com/dipsubhro/reseller",
-      demoLink: ""
-    },
-    {
-      title: "QuikType",
-      description: "A responsive typing speed test application with real-time WPM calculation, accuracy tracking, and performance analytics.",
-      image: "/quicktype.png",
-      technologies: ["React", "Tailwind CSS", "Node.js"],
-      liveLink: "https://quiktype-one.vercel.app/",
-      githubLink: "https://github.com/dipsubhro/quiktype",
-      demoLink: ""
-    },
-    {
-      title: "Boiling-Code",
-      description: "An npm tool that allows you to generate boilerplate code and code snippets directly in your terminal.",
-      image: "/boil.png",
-      technologies: ["Node.js", "Commander", "Chalk"],
-      liveLink: "https://www.npmjs.com/package/boiling-code",
-      githubLink: "https://github.com/dipsubhro/cli-tool-boilerplate",
-      demoLink: "https://x.com/Dipsubhro12/status/1921658218062712901"
-    },
-    {
-      title: "AI Image Rekognizer",
-      description: "An AI-powered image recognition application built with AWS Lambda and Terraform.",
-      image: "/rekognizer.png",
-      technologies: ["React", "AWS Lambda", "Terraform"],
-      liveLink: "https://rekognizer.netlify.app",
-      githubLink: "https://github.com/dipsubhro/rekognizer",
-      demoLink: ""
-    }
-  ];
-  // Trigger HMR update
-
-  const [api, setApi] = useState<CarouselApi>();
+  const cards = projects.map((project, index) => (
+    <Card key={project.title} card={project} index={index} />
+  ));
 
   return (
-    <section id="projects" className="py-12 md:py-20 px-6 lg:px-8">
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16">
+    <section id="projects" className="py-20 px-4 md:px-8 bg-background overflow-hidden">
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center mb-12">
           <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-6 tracking-tight">
             Featured Projects
           </h2>
@@ -95,99 +19,141 @@ const Projects = () => {
             Here are some of my recent projects that showcase my skills and passion for creating exceptional digital experiences.
           </p>
         </div>
-
-        <Carousel
-          setApi={setApi}
-          opts={{
-            loop: true,
-          }}
-          plugins={[
-            AutoScroll({
-              speed: 1,
-              stopOnInteraction: true,
-              stopOnMouseEnter: true,
-            }),
-          ]}
-          className="w-full max-w-5xl mx-auto"
-          onMouseEnter={() => api?.plugins().autoScroll.stop()}
-          onMouseLeave={() => api?.plugins().autoScroll.play()}
-        >
-          <CarouselContent>
-            {projects.map((project, index) => (
-              <CarouselItem key={index} className="basis-[85%] md:basis-1/2 lg:basis-1/3 p-4">
-                <Card className="h-full flex flex-col overflow-hidden hover:shadow-xl transition-all duration-300 hover:scale-105 border-border group">
-                  <div className="relative overflow-hidden shrink-0 h-48">
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                  </div>
-
-                  <CardHeader>
-                    <CardTitle className="text-xl font-bold">{project.title}</CardTitle>
-                    <CardDescription className="line-clamp-3">
-                      {project.description}
-                    </CardDescription>
-                  </CardHeader>
-
-                  <CardContent className="flex-grow">
-                    <div className="flex flex-wrap gap-2">
-                      {project.technologies.map((tech, techIndex) => (
-                        <Badge key={techIndex} variant="secondary">
-                          {tech}
-                        </Badge>
-                      ))}
-                    </div>
-                  </CardContent>
-
-                  <CardFooter className="flex justify-between items-center mt-auto">
-                    <div className="flex space-x-2">
-                      <Button
-                        asChild={!!project.liveLink}
-                        size="icon"
-                        variant="default"
-                        className="h-8 w-8"
-                        disabled={!project.liveLink}
-                      >
-                        {project.liveLink ? (
-                          <a
-                            href={project.liveLink}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            title="Live Site"
-                          >
-                            <ExternalLink className="h-4 w-4" />
-                          </a>
-                        ) : (
-                          <ExternalLink className="h-4 w-4" />
-                        )}
-                      </Button>
-                      {project.githubLink && (
-                        <Button asChild size="icon" variant="secondary" className="h-8 w-8">
-                          <a
-                            href={project.githubLink}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            title="GitHub"
-                          >
-                            <Github className="h-4 w-4" />
-                          </a>
-                        </Button>
-                      )}
-                    </div>
-                  </CardFooter>
-                </Card>
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-          <CarouselPrevious className="hidden md:flex z-50" />
-          <CarouselNext className="hidden md:flex z-50" />
-        </Carousel>
+        <Carousel items={cards} autoScroll={true} speed={0.5} />
       </div>
     </section>
   );
 };
+
+const ProjectContent = ({ project }: { project: any }) => {
+  return (
+    <div className="bg-black p-8 md:p-14 rounded-3xl mb-4">
+      <p className="text-white text-base md:text-2xl font-sans max-w-3xl mx-auto mb-8">
+        <span className="font-bold text-primary">
+          {project.title}
+        </span>{" "}
+        <span className="text-gray-300">- {project.description}</span>
+      </p>
+      
+      <div className="flex flex-wrap gap-2 mb-8 max-w-3xl mx-auto">
+        {project.technologies.map((tech: string, index: number) => (
+          <Badge key={index} variant="secondary" className="text-sm bg-primary/10 text-primary hover:bg-primary/20 border-none">
+            {tech}
+          </Badge>
+        ))}
+      </div>
+
+      <div className="flex gap-4 mb-8 max-w-3xl mx-auto">
+        {project.liveLink && (
+           <Button asChild className="gap-2">
+            <a href={project.liveLink} target="_blank" rel="noopener noreferrer">
+              <ExternalLink className="h-4 w-4" /> Live Demo
+            </a>
+           </Button>
+        )}
+        {project.githubLink && (
+          <Button variant="outline" asChild className="gap-2 border-primary text-primary hover:bg-primary hover:text-black">
+            <a href={project.githubLink} target="_blank" rel="noopener noreferrer">
+              <Github className="h-4 w-4" /> GitHub
+            </a>
+          </Button>
+        )}
+      </div>
+
+      <img
+        src={project.image}
+        alt={project.title}
+        className="w-full h-auto object-contain rounded-xl shadow-lg"
+      />
+    </div>
+  );
+};
+
+const projects = [
+  {
+    category: "Web Development",
+    title: "SubTerm",
+    src: "/subterm.png",
+    content: <ProjectContent project={{
+      title: "SubTerm",
+      description: "A web-based IDE featuring a text editor, file browser, and terminal—running on your own virtual machine",
+      image: "/subterm.png",
+      technologies: ["Vite", "AceEditor", "Node-pty", "EC2"],
+      liveLink: "https://subterm.duckdns.org",
+      githubLink: "https://github.com/dipsubhro/subterm-frontend",
+      demoLink: "https://x.com/Dipsubhro12/status/1926130395793297551"
+    }} />,
+  },
+  {
+    category: "AI Application",
+    title: "PDFChat-AI",
+    src: "/pdfChat.png",
+    content: <ProjectContent project={{
+      title: "PDFChat-AI",
+      description: "A web app to extract content from your PDFs and chat with AI for context-aware insights tailored to your documents.",
+      image: "/pdfChat.png",
+      technologies: ["LangChain", "Qdrant", "BullMQ", "Next.js"],
+      liveLink: "https://pdf-ai-chi.vercel.app/",
+      githubLink: "https://github.com/dipsubhro/pdf-AI",
+      demoLink: "https://x.com/Dipsubhro12/status/1920925360847229382"
+    }} />,
+  },
+  {
+    category: "E-Commerce",
+    title: "Reseller",
+    src: "/ecom.png",
+    content: <ProjectContent project={{
+      title: "Reseller",
+      description: "A complete Ecom platform where users can list their products for reselling, and others can purchase them through a shared link.",
+      image: "/ecom.png",
+      technologies: ["Next.js", "MongoDB", "Clerk"],
+      liveLink: "",
+      githubLink: "https://github.com/dipsubhro/reseller",
+      demoLink: ""
+    }} />,
+  },
+  {
+    category: "Tool",
+    title: "QuikType",
+    src: "/quicktype.png",
+    content: <ProjectContent project={{
+      title: "QuikType",
+      description: "A responsive typing speed test application with real-time WPM calculation, accuracy tracking, and performance analytics.",
+      image: "/quicktype.png",
+      technologies: ["React", "Tailwind CSS", "Node.js"],
+      liveLink: "https://quiktype-one.vercel.app/",
+      githubLink: "https://github.com/dipsubhro/quiktype",
+      demoLink: ""
+    }} />,
+  },
+  {
+    category: "CLI Tool",
+    title: "Boiling-Code",
+    src: "/boil.png",
+    content: <ProjectContent project={{
+      title: "Boiling-Code",
+      description: "An npm tool that allows you to generate boilerplate code and code snippets directly in your terminal.",
+      image: "/boil.png",
+      technologies: ["Node.js", "Commander", "Chalk"],
+      liveLink: "https://www.npmjs.com/package/boiling-code",
+      githubLink: "https://github.com/dipsubhro/cli-tool-boilerplate",
+      demoLink: "https://x.com/Dipsubhro12/status/1921658218062712901"
+    }} />,
+  },
+  {
+    category: "Cloud & AI",
+    title: "AI Image Rekognizer",
+    src: "/rekognizer.png",
+    content: <ProjectContent project={{
+      title: "AI Image Rekognizer",
+      description: "An AI-powered image recognition application built with AWS Lambda and Terraform.",
+      image: "/rekognizer.png",
+      technologies: ["React", "AWS Lambda", "Terraform"],
+      liveLink: "https://rekognizer.netlify.app",
+      githubLink: "https://github.com/dipsubhro/rekognizer",
+      demoLink: ""
+    }} />,
+  }
+];
 
 export default Projects;
