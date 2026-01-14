@@ -2,6 +2,7 @@
 import Hero from "../components/Hero";
 import Projects from "../components/Projects";
 import TechStack from "../components/TechStack";
+import GithubActivity from "../components/GithubActivity";
 import Contact from "../components/Contact";
 
 const Index = () => {
@@ -10,6 +11,7 @@ const Index = () => {
       <Hero />
       <Projects />
       <TechStack />
+      <GithubActivity />
       <Contact />
     </div>
   );
