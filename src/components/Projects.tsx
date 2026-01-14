@@ -71,6 +71,20 @@ const ProjectContent = ({ project }: { project: any }) => {
 
 const projects = [
   {
+    category: "Monitoring & DevOps",
+    title: "JustPing",
+    src: "/justping.png",
+    content: <ProjectContent project={{
+      title: "JustPing",
+      description: "A real-time website uptime and change monitoring platform with visual pings, alerts, and webhook-based tracking.",
+      image: "/justping.png",
+      technologies: ["Go", "MongoDB", "Webhooks", "React"],
+      liveLink: "https://justping.subhro.tech",
+      githubLink: "https://github.com/dipsubhro/justping",
+      demoLink: ""
+    }} />,
+  },
+  {
     category: "Web Development",
     title: "SubTerm",
     src: "/subterm.png",
@@ -85,17 +99,17 @@ const projects = [
     }} />,
   },
   {
-    category: "AI Application",
-    title: "PDFChat-AI",
-    src: "/pdfChat.png",
+    category: "Tool",
+    title: "QuikType",
+    src: "/quicktype.png",
     content: <ProjectContent project={{
-      title: "PDFChat-AI",
-      description: "A web app to extract content from your PDFs and chat with AI for context-aware insights tailored to your documents.",
-      image: "/pdfChat.png",
-      technologies: ["LangChain", "Qdrant", "BullMQ", "Next.js"],
-      liveLink: "https://pdf-ai-chi.vercel.app/",
-      githubLink: "https://github.com/dipsubhro/pdf-AI",
-      demoLink: "https://x.com/Dipsubhro12/status/1920925360847229382"
+      title: "QuikType",
+      description: "A responsive typing speed test application with real-time WPM calculation, accuracy tracking, and performance analytics.",
+      image: "/quicktype.png",
+      technologies: ["React", "Tailwind CSS", "Node.js"],
+      liveLink: "https://quiktype-one.vercel.app/",
+      githubLink: "https://github.com/dipsubhro/quiktype",
+      demoLink: ""
     }} />,
   },
   {
@@ -113,16 +127,16 @@ const projects = [
     }} />,
   },
   {
-    category: "Tool",
-    title: "QuikType",
-    src: "/quicktype.png",
+    category: "Cloud & AI",
+    title: "AI Image Rekognizer",
+    src: "/rekognizer.png",
     content: <ProjectContent project={{
-      title: "QuikType",
-      description: "A responsive typing speed test application with real-time WPM calculation, accuracy tracking, and performance analytics.",
-      image: "/quicktype.png",
-      technologies: ["React", "Tailwind CSS", "Node.js"],
-      liveLink: "https://quiktype-one.vercel.app/",
-      githubLink: "https://github.com/dipsubhro/quiktype",
+      title: "AI Image Rekognizer",
+      description: "An AI-powered image recognition application built with AWS Lambda and Terraform.",
+      image: "/rekognizer.png",
+      technologies: ["React", "AWS Lambda", "Terraform"],
+      liveLink: "https://rekognizer.netlify.app",
+      githubLink: "https://github.com/dipsubhro/rekognizer",
       demoLink: ""
     }} />,
   },
@@ -141,19 +155,20 @@ const projects = [
     }} />,
   },
   {
-    category: "Cloud & AI",
-    title: "AI Image Rekognizer",
-    src: "/rekognizer.png",
+    category: "AI Application",
+    title: "PDFChat-AI",
+    src: "/pdfChat.png",
     content: <ProjectContent project={{
-      title: "AI Image Rekognizer",
-      description: "An AI-powered image recognition application built with AWS Lambda and Terraform.",
-      image: "/rekognizer.png",
-      technologies: ["React", "AWS Lambda", "Terraform"],
-      liveLink: "https://rekognizer.netlify.app",
-      githubLink: "https://github.com/dipsubhro/rekognizer",
-      demoLink: ""
+      title: "PDFChat-AI",
+      description: "A web app to extract content from your PDFs and chat with AI for context-aware insights tailored to your documents.",
+      image: "/pdfChat.png",
+      technologies: ["LangChain", "Qdrant", "BullMQ", "Next.js"],
+      liveLink: "https://pdf-ai-chi.vercel.app/",
+      githubLink: "https://github.com/dipsubhro/pdf-AI",
+      demoLink: "https://x.com/Dipsubhro12/status/1920925360847229382"
     }} />,
   }
 ];
+
 
 export default Projects;

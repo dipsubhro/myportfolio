@@ -23,7 +23,7 @@ const Contact = () => {
             className="rounded-full text-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 bg-blue-600 hover:bg-blue-700 text-white px-8 py-6 h-auto"
           >
             <a
-              href="https://mail.google.com/mail/?view=cm&fs=1&to=sbhrdpsinha@gmail.com"
+              href="mailto:hi@subhro.tech"
             >
               Get In Touch
             </a>
