@@ -139,6 +139,8 @@ export const Carousel = ({ items, initialScroll = 0, autoScroll = false, speed =
           onScroll={checkScrollability}
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
+          onTouchStart={() => setIsHovered(true)}
+          onTouchEnd={() => setIsHovered(false)}
         >
           <div
             className={cn(
