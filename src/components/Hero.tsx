@@ -79,7 +79,7 @@ const Hero = () => {
             className="w-48 rounded-full text-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 border border-border"
           >
             <a
-              href="/resume4subhro7.pdf"
+              href="/resume4subhro9.pdf"
               target="_blank"
               rel="noopener noreferrer"
             >
