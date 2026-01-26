@@ -93,7 +93,7 @@ const projects = [
       description: "A web-based IDE featuring a text editor, file browser, and terminal—running on your own virtual machine",
       image: "/subterm.png",
       technologies: ["Vite", "AceEditor", "Node-pty", "EC2"],
-      liveLink: "https://subterm.duckdns.org",
+      liveLink: "https://subterm.subhro.tech",
       githubLink: "https://github.com/dipsubhro/subterm-frontend",
       demoLink: "https://x.com/Dipsubhro12/status/1926130395793297551"
     }} />,
