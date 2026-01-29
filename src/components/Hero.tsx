@@ -66,7 +66,7 @@ const Hero = () => {
           <Button
             asChild
             size="lg"
-            className="w-48 rounded-full text-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 bg-blue-600 hover:bg-blue-700 text-white"
+            className="w-36 sm:w-48 rounded-full text-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 bg-blue-600 hover:bg-blue-700 text-white"
           >
             <a href="#projects">
               View My Work
@@ -76,7 +76,7 @@ const Hero = () => {
             asChild
             variant="secondary"
             size="lg"
-            className="w-48 rounded-full text-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 border border-border"
+            className="w-36 sm:w-48 rounded-full text-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 border border-border"
           >
             <a
               href="/resume4subhro9.pdf"

@@ -2,7 +2,7 @@ import { GitHubCalendar } from "react-github-calendar";
 
 const GithubActivity = () => {
   return (
-    <section id="github-activity" className="py-24 md:py-48 px-4 md:px-8 bg-black">
+    <section id="github-activity" className="py-16 md:py-48 px-4 md:px-8 bg-black">
       <div className="max-w-5xl mx-auto text-center">
         <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 tracking-tight">
           GitHub <span className="text-primary">Activity</span>
