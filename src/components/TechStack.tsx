@@ -115,7 +115,7 @@ const TechStack = () => {
     ];
 
     return (
-        <section id="tech-stack" className="py-12 md:py-20 px-6 lg:px-8 bg-background">
+        <section id="tech-stack" className="py-20 md:py-32 px-6 lg:px-8 bg-background">
             <div className="max-w-6xl mx-auto text-center">
                 <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-6 tracking-tight">
                     Tech Stack
