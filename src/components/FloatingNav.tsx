@@ -19,11 +19,30 @@ const navItems: NavItem[] = [
 const FloatingNav = () => {
   const [activeSection, setActiveSection] = useState("hero");
   const [isVisible, setIsVisible] = useState(false);
+  const [hasPeeked, setHasPeeked] = useState(false);
+
+  // Initial peek animation on page load
+  useEffect(() => {
+    const peekTimer = setTimeout(() => {
+      setIsVisible(true);
+      const hideTimer = setTimeout(() => {
+        if (window.scrollY <= 100) {
+          setIsVisible(false);
+        }
+        setHasPeeked(true);
+      }, 2000);
+      return () => clearTimeout(hideTimer);
+    }, 500);
+
+    return () => clearTimeout(peekTimer);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
-      // Show nav after scrolling past hero
-      setIsVisible(window.scrollY > 100);
+      // Show nav after scrolling past hero (or keep visible after peek)
+      if (hasPeeked) {
+        setIsVisible(window.scrollY > 100);
+      }
 
       // Determine active section
       const sections = navItems.map((item) => ({
@@ -49,7 +68,7 @@ const FloatingNav = () => {
     handleScroll();
 
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [hasPeeked]);
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
@@ -60,11 +79,11 @@ const FloatingNav = () => {
 
   return (
     <nav
-      className={`fixed top-6 right-6 z-50 transition-all duration-300 ${
-        isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4 pointer-events-none"
+      className={`fixed top-1/2 right-6 -translate-y-1/2 z-50 transition-all duration-300 ${
+        isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-4 pointer-events-none"
       }`}
     >
-      <ul className="flex items-center gap-1 px-2 py-2 rounded-full bg-card/80 backdrop-blur-md border border-border shadow-lg">
+      <ul className="flex flex-col items-center gap-1 px-2 py-2 rounded-full bg-card/80 backdrop-blur-md border border-border shadow-lg">
         {navItems.map((item) => {
           const Icon = item.icon;
           return (
@@ -80,7 +99,7 @@ const FloatingNav = () => {
               >
                 <Icon className="w-4 h-4" />
               </button>
-              <span className="absolute top-full left-1/2 -translate-x-1/2 mt-2 px-2 py-1 text-xs font-medium text-foreground bg-card border border-border rounded-md shadow-md opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap">
+              <span className="absolute top-1/2 right-full -translate-y-1/2 mr-2 px-2 py-1 text-xs font-medium text-foreground bg-card border border-border rounded-md shadow-md opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap">
                 {item.label}
               </span>
             </li>
