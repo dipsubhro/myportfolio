@@ -88,9 +88,14 @@ const Blogs = () => {
     return (
       <section id="blogs" className="py-20 px-4 md:px-8 bg-background">
         <div className="max-w-3xl mx-auto">
-          <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-12 tracking-tight">
-            Writing
-          </h2>
+          <div className="text-center mb-12">
+            <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-6 tracking-tight">
+              Writing
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Technical articles on system design, performance, and software engineering.
+            </p>
+          </div>
           <div className="space-y-6">
             {[1, 2, 3].map((i) => (
               <div key={i} className="py-6 border-b border-border first:border-t animate-pulse">
@@ -112,9 +117,14 @@ const Blogs = () => {
   return (
     <section id="blogs" className="py-20 px-4 md:px-8 bg-background">
       <div className="max-w-3xl mx-auto">
-        <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-12 tracking-tight">
-          Writing
-        </h2>
+        <div className="text-center mb-12">
+          <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-6 tracking-tight">
+            Writing
+          </h2>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            Technical articles on system design, performance, and software engineering.
+          </p>
+        </div>
 
         <div className="space-y-0">
           {blogs.map((entry, index) => (
