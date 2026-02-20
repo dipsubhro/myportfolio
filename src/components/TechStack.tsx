@@ -35,7 +35,6 @@ import {
 const SiQdrant = (props: React.SVGProps<SVGSVGElement>) => (
     <svg role="img" viewBox="0 0 24 24" fill="currentColor" {...props}>
         <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2zm.2 15h2v2h-2v-2zm-3-2h2v2h-2v-2zm6-2h-3v-6h3c1.657 0 3 1.343 3 3s-1.343 3-3 3z" /> 
-        {/* Simplified conceptual shape - circle with internal Q-like logic or just use text for clarity */}
         <text x="12" y="17" fontSize="16" fontWeight="bold" textAnchor="middle" fill="currentColor">Q</text>
     </svg>
 );
@@ -115,40 +114,29 @@ const TechStack = () => {
     ];
 
     return (
-        <section id="tech-stack" className="py-16 md:py-32 px-6 lg:px-8 bg-background">
-            <div className="max-w-6xl mx-auto text-center">
-                <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-6 tracking-tight">
-                    Tech Stack
-                </h2>
-                <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-12">
-                    A curated collection of technologies and tools I use to build scalable, high-performance web applications.
-                </p>
-
-                <TooltipProvider delayDuration={100}>
-                    <div className="space-y-3">
-                        {techCategories.map((category, index) => (
-                            <div key={index} className="flex flex-wrap justify-center gap-2 md:gap-3">
-                                {category.techs.map((tech, techIndex) => (
-                                    <Tooltip key={techIndex}>
-                                        <TooltipTrigger asChild>
-                                            <div className="p-2 md:p-3 cursor-pointer">
-                                                <tech.icon
-                                                    className="w-8 h-8 md:w-10 md:h-10"
-                                                    style={{ color: tech.color }}
-                                                />
-                                            </div>
-                                        </TooltipTrigger>
-                                        <TooltipContent side="bottom">
-                                            <p className="font-medium">{tech.name}</p>
-                                        </TooltipContent>
-                                    </Tooltip>
-                                ))}
-                            </div>
+        <TooltipProvider delayDuration={100}>
+            <div className="space-y-3">
+                {techCategories.map((category, index) => (
+                    <div key={index} className="flex flex-wrap justify-center gap-2 md:gap-3">
+                        {category.techs.map((tech, techIndex) => (
+                            <Tooltip key={techIndex}>
+                                <TooltipTrigger asChild>
+                                    <div className="p-2 md:p-3 cursor-pointer">
+                                        <tech.icon
+                                            className="w-8 h-8 md:w-10 md:h-10"
+                                            style={{ color: tech.color }}
+                                        />
+                                    </div>
+                                </TooltipTrigger>
+                                <TooltipContent side="bottom">
+                                    <p className="font-medium">{tech.name}</p>
+                                </TooltipContent>
+                            </Tooltip>
                         ))}
                     </div>
-                </TooltipProvider>
+                ))}
             </div>
-        </section>
+        </TooltipProvider>
     );
 };
 

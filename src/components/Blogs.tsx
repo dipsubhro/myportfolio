@@ -86,27 +86,17 @@ const Blogs = () => {
 
   if (loading) {
     return (
-      <section id="blogs" className="py-20 px-4 md:px-8 bg-background">
-        <div className="max-w-3xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-6 tracking-tight">
-              Writing
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Technical articles on system design, performance, and software engineering.
-            </p>
-          </div>
-          <div className="space-y-6">
-            {[1, 2, 3].map((i) => (
-              <div key={i} className="py-6 border-b border-border first:border-t animate-pulse">
-                <div className="h-5 bg-muted rounded w-3/4 mb-3"></div>
-                <div className="h-4 bg-muted rounded w-1/4 mb-2"></div>
-                <div className="h-4 bg-muted rounded w-full"></div>
-              </div>
-            ))}
-          </div>
+      <div className="max-w-3xl mx-auto">
+        <div className="space-y-6">
+          {[1, 2, 3].map((i) => (
+            <div key={i} className="py-6 border-b border-border first:border-t animate-pulse">
+              <div className="h-5 bg-muted rounded w-3/4 mb-3"></div>
+              <div className="h-4 bg-muted rounded w-1/4 mb-2"></div>
+              <div className="h-4 bg-muted rounded w-full"></div>
+            </div>
+          ))}
         </div>
-      </section>
+      </div>
     );
   }
 
@@ -115,58 +105,47 @@ const Blogs = () => {
   }
 
   return (
-    <section id="blogs" className="py-20 px-4 md:px-8 bg-background">
-      <div className="max-w-3xl mx-auto">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-6 tracking-tight">
-            Writing
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Technical articles on system design, performance, and software engineering.
-          </p>
-        </div>
-
-        <div className="space-y-0">
-          {blogs.map((entry, index) => (
-            <article
-              key={index}
-              className="group py-6 border-b border-border first:border-t"
-            >
-              <a
-                href={entry.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block"
-              >
-                <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-1 md:gap-4 mb-2">
-                  <h3 className="text-lg font-semibold text-foreground group-hover:text-muted-foreground transition-colors">
-                    {entry.title}
-                  </h3>
-                  <time className="text-sm text-muted-foreground whitespace-nowrap">
-                    {entry.date}
-                  </time>
-                </div>
-                <p className="text-muted-foreground text-sm leading-relaxed line-clamp-2">
-                  {entry.summary}
-                </p>
-              </a>
-            </article>
-          ))}
-        </div>
-
-        <div className="mt-10">
-          <a
-            href={`https://hashnode.com/@${HASHNODE_USERNAME}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+    <div className="max-w-3xl mx-auto">
+      <div className="space-y-0">
+        {blogs.map((entry, index) => (
+          <article
+            key={index}
+            className="group py-6 border-b border-border first:border-t"
           >
-            View all posts
-            <ArrowRight className="h-4 w-4" />
-          </a>
-        </div>
+            <a
+              href={entry.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block"
+            >
+              <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-1 md:gap-4 mb-2">
+                <h3 className="text-lg font-semibold text-foreground group-hover:text-muted-foreground transition-colors">
+                  {entry.title}
+                </h3>
+                <time className="text-sm text-muted-foreground whitespace-nowrap">
+                  {entry.date}
+                </time>
+              </div>
+              <p className="text-muted-foreground text-sm leading-relaxed line-clamp-2">
+                {entry.summary}
+              </p>
+            </a>
+          </article>
+        ))}
       </div>
-    </section>
+
+      <div className="mt-10">
+        <a
+          href={`https://hashnode.com/@${HASHNODE_USERNAME}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+        >
+          View all posts
+          <ArrowRight className="h-4 w-4" />
+        </a>
+      </div>
+    </div>
   );
 };
 

@@ -8,21 +8,7 @@ const Projects = () => {
     <Card key={project.title} card={project} index={index} />
   ));
 
-  return (
-    <section id="projects" className="py-20 px-4 md:px-8 bg-background overflow-hidden">
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-6 tracking-tight">
-            Featured Projects
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Here are some of my recent projects that showcase my skills and passion for creating exceptional digital experiences.
-          </p>
-        </div>
-        <Carousel items={cards} autoScroll={true} speed={0.5} />
-      </div>
-    </section>
-  );
+  return <Carousel items={cards} autoScroll={true} speed={0.5} />;
 };
 
 const ProjectContent = ({ project }: { project: any }) => {
