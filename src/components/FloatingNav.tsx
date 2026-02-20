@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Home, FolderKanban, PenLine, Layers, Mail } from "lucide-react";
+import { Home, FolderKanban, PenLine, Layers, Mail, Github } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
 interface NavItem {
@@ -11,8 +11,9 @@ interface NavItem {
 const navItems: NavItem[] = [
   { id: "hero", label: "Home", icon: Home },
   { id: "projects", label: "Projects", icon: FolderKanban },
-  { id: "blogs", label: "Writing", icon: PenLine },
   { id: "tech-stack", label: "Stack", icon: Layers },
+  { id: "github-activity", label: "GitHub", icon: Github },
+  { id: "blogs", label: "Writing", icon: PenLine },
   { id: "contact", label: "Contact", icon: Mail },
 ];
 

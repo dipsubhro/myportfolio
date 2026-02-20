@@ -15,9 +15,9 @@ const Index = () => {
       <FloatingNav />
       <Hero />
       <Projects />
-      <Blogs />
       <TechStack />
       <GithubActivity />
+      <Blogs />
       <Contact />
     </div>
   );
