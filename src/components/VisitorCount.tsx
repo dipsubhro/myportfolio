@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Eye } from "lucide-react";
 import { useSpring, useTransform, motion } from "framer-motion";
 
@@ -8,6 +8,7 @@ const VisitorCount = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [shouldAnimate, setShouldAnimate] = useState(false);
   const [count, setCount] = useState<number | null>(null);
+  const scrollTimeout = useRef<NodeJS.Timeout | null>(null);
 
   const spring = useSpring(0, { duration: 1500 });
   const display = useTransform(spring, (value) =>
@@ -30,18 +31,30 @@ const VisitorCount = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const visible = window.scrollY > 100;
-      setIsVisible(visible);
-      if (visible && !shouldAnimate && count !== null) {
+      setIsVisible(true);
+
+      if (scrollTimeout.current) {
+        clearTimeout(scrollTimeout.current);
+      }
+
+      scrollTimeout.current = setTimeout(() => {
+        setIsVisible(false);
+      }, 1500);
+
+      if (!shouldAnimate && count !== null) {
         setShouldAnimate(true);
         spring.set(count);
       }
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll();
 
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      if (scrollTimeout.current) {
+        clearTimeout(scrollTimeout.current);
+      }
+    };
   }, [shouldAnimate, spring, count]);
 
   if (count === null) return null;

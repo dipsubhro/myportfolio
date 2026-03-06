@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Home, FolderKanban, PenLine, Layers, Mail, Github } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
@@ -20,32 +20,20 @@ const navItems: NavItem[] = [
 const FloatingNav = () => {
   const [activeSection, setActiveSection] = useState("hero");
   const [isVisible, setIsVisible] = useState(false);
-  const [hasPeeked, setHasPeeked] = useState(false);
-
-  // Initial peek animation on page load
-  useEffect(() => {
-    const peekTimer = setTimeout(() => {
-      setIsVisible(true);
-      const hideTimer = setTimeout(() => {
-        if (window.scrollY <= 100) {
-          setIsVisible(false);
-        }
-        setHasPeeked(true);
-      }, 2000);
-      return () => clearTimeout(hideTimer);
-    }, 500);
-
-    return () => clearTimeout(peekTimer);
-  }, []);
+  const scrollTimeout = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
-      // Show nav after scrolling past hero (or keep visible after peek)
-      if (hasPeeked) {
-        setIsVisible(window.scrollY > 100);
+      setIsVisible(true);
+
+      if (scrollTimeout.current) {
+        clearTimeout(scrollTimeout.current);
       }
 
-      // Determine active section
+      scrollTimeout.current = setTimeout(() => {
+        setIsVisible(false);
+      }, 1500);
+
       const sections = navItems.map((item) => ({
         id: item.id,
         element: document.getElementById(item.id),
@@ -66,10 +54,14 @@ const FloatingNav = () => {
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll();
 
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [hasPeeked]);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      if (scrollTimeout.current) {
+        clearTimeout(scrollTimeout.current);
+      }
+    };
+  }, []);
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
