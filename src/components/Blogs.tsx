@@ -65,7 +65,7 @@ const Blogs = () => {
         
         const posts = data?.data?.user?.publications?.edges?.[0]?.node?.posts?.edges || [];
         
-        const formattedBlogs: BlogEntry[] = posts.map((edge: any) => ({
+        const formattedBlogs: BlogEntry[] = posts.map((edge: { node: { title: string; publishedAt: string; brief: string; url: string } }) => ({
           title: edge.node.title,
           date: formatDate(edge.node.publishedAt),
           summary: edge.node.brief,

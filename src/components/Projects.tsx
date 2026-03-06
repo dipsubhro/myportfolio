@@ -11,7 +11,17 @@ const Projects = () => {
   return <Carousel items={cards} autoScroll={true} speed={0.5} />;
 };
 
-const ProjectContent = ({ project }: { project: any }) => {
+interface ProjectProps {
+  title: string;
+  description: string;
+  image: string;
+  technologies: string[];
+  liveLink: string;
+  githubLink: string;
+  demoLink: string;
+}
+
+const ProjectContent = ({ project }: { project: ProjectProps }) => {
   return (
     <div className="bg-black p-8 md:p-14 rounded-3xl mb-4">
       <p className="text-white text-base md:text-2xl font-sans max-w-3xl mx-auto mb-8">
