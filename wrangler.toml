@@ -1,0 +1,24 @@
+name = "portfolio"
+pages_build_output_dir = "./dist"
+compatibility_date = "2024-09-23"
+
+# SPA fallback: serve index.html for all routes so React Router works
+[[redirects]]
+from = "/*"
+to = "/index.html"
+status = 200
+
+# Correct MIME type for hashed JS chunks (fixes Chrome strict MIME checking)
+[[headers]]
+for = "/assets/*.js"
+
+[headers.values]
+Content-Type = "application/javascript; charset=utf-8"
+Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+for = "/assets/*.css"
+
+[headers.values]
+Content-Type = "text/css; charset=utf-8"
+Cache-Control = "public, max-age=31536000, immutable"
