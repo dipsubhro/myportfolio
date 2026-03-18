@@ -8,10 +8,17 @@ import Blogs from "../components/Blogs";
 import FloatingNav from "../components/FloatingNav";
 import VisitorCount from "../components/VisitorCount";
 import Section from "../components/Section";
+import { ShootingStars } from "../components/ui/shooting-stars";
+import { StarsBackground } from "../components/ui/stars-background";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background w-full overflow-x-hidden">
+    <div className="min-h-screen bg-background w-full overflow-x-hidden relative">
+      <div className="fixed inset-0 pointer-events-none z-0">
+        <ShootingStars />
+        <StarsBackground />
+      </div>
+      <div className="relative z-10">
       <VisitorCount />
       <FloatingNav />
       <Hero />
@@ -33,7 +40,6 @@ const Index = () => {
         id="github-activity"
         title="GitHub Activity"
         subtitle="Here is a snapshot of my recent contributions on GitHub."
-        className="bg-black"
       >
         <GithubActivity />
       </Section>
@@ -51,6 +57,7 @@ const Index = () => {
       >
         <Contact />
       </Section>
+      </div>
     </div>
   );
 };

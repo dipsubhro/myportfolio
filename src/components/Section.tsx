@@ -12,7 +12,7 @@ const Section = ({ id, title, subtitle, children, className = "" }: SectionProps
   return (
     <section
       id={id}
-      className={`h-[100dvh] w-full snap-start snap-always flex flex-col justify-center px-4 md:px-8 bg-background overflow-hidden ${className}`}
+      className={`h-[100dvh] w-full snap-start snap-always flex flex-col justify-center px-4 md:px-8 bg-transparent overflow-hidden ${className}`}
     >
       <div className="max-w-7xl mx-auto w-full">
         <div className="text-center mb-12">
