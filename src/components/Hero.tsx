@@ -1,11 +1,13 @@
-
 import { Github, Linkedin, Instagram } from "lucide-react";
 import { X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const Hero = () => {
   return (
-    <section id="hero" className="h-[100dvh] w-full snap-start snap-always flex items-center justify-center px-6 lg:px-8">
+    <section
+      id="hero"
+      className="h-[100dvh] w-full snap-start snap-always flex items-center justify-center px-6 lg:px-8"
+    >
       <div className="max-w-4xl mx-auto text-center">
         <div className="mb-8 flex justify-center">
           <div className="relative group">
@@ -24,7 +26,10 @@ const Hero = () => {
         </h1>
 
         <p className="text-lg lg:text-xl text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed">
-          I am a Full-stack developer building scalable web applications with a focus on cloud-native AWS deployments. My expertise lies in designing high-performance, concurrent backend services that drive fast and functional digital solutions.
+          I am a Full-stack developer building scalable web applications with a
+          focus on cloud-native AWS deployments. My expertise lies in designing
+          high-performance, concurrent backend services that drive fast and
+          functional digital solutions.
         </p>
 
         <div className="flex justify-center space-x-6 mb-12">
@@ -37,7 +42,7 @@ const Hero = () => {
             <Github className="w-6 h-6 text-foreground group-hover:text-blue-600 transition-colors duration-300" />
           </a>
           <a
-            href="https://www.linkedin.com/in/subhradip-sinha-8a31b9277/"
+            href="https://www.linkedin.com/in/dipsubhro"
             target="_blank"
             rel="noopener noreferrer"
             className="p-3 rounded-full bg-card shadow-md hover:shadow-lg transition-all duration-300 hover:scale-110 group border border-border"
@@ -68,9 +73,7 @@ const Hero = () => {
             size="lg"
             className="w-36 sm:w-48 rounded-full text-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 bg-blue-600 hover:bg-blue-700 text-white"
           >
-            <a href="#projects">
-              View My Work
-            </a>
+            <a href="#projects">View My Work</a>
           </Button>
           <Button
             asChild
