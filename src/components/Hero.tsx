@@ -50,7 +50,7 @@ const Hero = () => {
             <Linkedin className="w-6 h-6 text-foreground group-hover:text-blue-600 transition-colors duration-300" />
           </a>
           <a
-            href="https://x.com/Dipsubhro12?t=HwytE8lR6_Iz_cu1lhqu3A&s=09"
+            href="https://x.com/subhro_logs"
             target="_blank"
             rel="noopener noreferrer"
             className="p-3 rounded-full bg-card shadow-md hover:shadow-lg transition-all duration-300 hover:scale-110 group border border-border"

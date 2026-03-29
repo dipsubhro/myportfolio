@@ -1,4 +1,5 @@
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import { AnimatePresence, motion } from "framer-motion";
+import { type MouseEvent, type ReactNode, useState } from "react";
 
 const DEVICON_BASE = "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons";
 
@@ -6,6 +7,11 @@ interface TechItem {
     name: string;
     icon: string; // Devicon CDN URL
     invert?: boolean; // true for dark icons that need to be inverted on dark bg
+}
+
+interface CustomTechItem {
+    name: string;
+    customIcon: string;
 }
 
 const devicon = (name: string, variant: string = "original") =>
@@ -24,8 +30,59 @@ const TanStackIcon = ({ className }: { className?: string }) => (
     </svg>
 );
 
+const TechHoverCard = ({
+    name,
+    children,
+}: {
+    name: string;
+    children: ReactNode;
+}) => {
+    const [isOpen, setIsOpen] = useState(false);
+    const [position, setPosition] = useState({ x: 0, y: -18 });
+
+    const handleMouseMove = (event: MouseEvent<HTMLDivElement>) => {
+        const bounds = event.currentTarget.getBoundingClientRect();
+        const nextX = event.clientX - bounds.left - bounds.width / 2;
+        const nextY = event.clientY - bounds.top - bounds.height - 14;
+
+        setPosition({ x: nextX, y: nextY });
+    };
+
+    return (
+        <div
+            className="relative flex justify-center"
+            onMouseEnter={() => setIsOpen(true)}
+            onMouseLeave={() => setIsOpen(false)}
+            onMouseMove={handleMouseMove}
+            onFocus={() => setIsOpen(true)}
+            onBlur={() => setIsOpen(false)}
+        >
+            <AnimatePresence>
+                {isOpen ? (
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.9, y: 8 }}
+                        animate={{ opacity: 1, scale: 1, x: position.x, y: position.y }}
+                        exit={{ opacity: 0, scale: 0.92, y: 4 }}
+                        transition={{
+                            opacity: { duration: 0.16 },
+                            scale: { duration: 0.16 },
+                            x: { type: "spring", stiffness: 240, damping: 24 },
+                            y: { type: "spring", stiffness: 240, damping: 24 },
+                        }}
+                        className="pointer-events-none absolute left-1/2 top-0 z-20 w-max -translate-x-1/2 rounded-2xl border border-white/10 bg-black/90 px-3 py-2 shadow-[0_18px_45px_rgba(0,0,0,0.35)] backdrop-blur-md"
+                    >
+                        <div className="text-sm font-semibold text-white">{name}</div>
+                    </motion.div>
+                ) : null}
+            </AnimatePresence>
+
+            {children}
+        </div>
+    );
+};
+
 const TechStack = () => {
-    const techCategories: { name: string; techs: (TechItem | { name: string; customIcon: string })[] }[] = [
+    const techCategories: { name: string; techs: (TechItem | CustomTechItem)[] }[] = [
         {
             name: "Languages",
             techs: [
@@ -88,36 +145,32 @@ const TechStack = () => {
     ];
 
     return (
-        <TooltipProvider delayDuration={100}>
-            <div className="space-y-3">
-                {techCategories.map((category, index) => (
-                    <div key={index} className="flex flex-wrap justify-center gap-2 md:gap-3">
-                        {category.techs.map((tech, techIndex) => (
-                            <Tooltip key={techIndex}>
-                                <TooltipTrigger asChild>
-                                    <div className="p-2 md:p-3 cursor-pointer">
-                                        {"customIcon" in tech ? (
-                                            tech.customIcon === "qdrant" ? <QdrantIcon className="w-8 h-8 md:w-10 md:h-10" /> : <TanStackIcon className="w-8 h-8 md:w-10 md:h-10" />
-                                        ) : (
-                                            <img
-                                                src={tech.icon}
-                                                alt={tech.name}
-                                                className="w-8 h-8 md:w-10 md:h-10"
-                                                style={"invert" in tech && tech.invert ? { filter: "brightness(0) invert(1)" } : undefined}
-                                                loading="lazy"
-                                            />
-                                        )}
-                                    </div>
-                                </TooltipTrigger>
-                                <TooltipContent side="bottom">
-                                    <p className="font-medium">{tech.name}</p>
-                                </TooltipContent>
-                            </Tooltip>
-                        ))}
-                    </div>
-                ))}
-            </div>
-        </TooltipProvider>
+        <div className="space-y-3">
+            {techCategories.map((category, index) => (
+                <div key={index} className="flex flex-wrap justify-center gap-2 md:gap-3">
+                    {category.techs.map((tech, techIndex) => (
+                        <TechHoverCard key={techIndex} name={tech.name}>
+                            <div
+                                className="cursor-pointer rounded-2xl border border-transparent p-2 transition-transform duration-200 hover:scale-110 hover:border-white/10 focus-visible:scale-110 focus-visible:border-white/10 md:p-3"
+                                tabIndex={0}
+                            >
+                                {"customIcon" in tech ? (
+                                    tech.customIcon === "qdrant" ? <QdrantIcon className="h-8 w-8 md:h-10 md:w-10" /> : <TanStackIcon className="h-8 w-8 md:h-10 md:w-10" />
+                                ) : (
+                                    <img
+                                        src={tech.icon}
+                                        alt={tech.name}
+                                        className="h-8 w-8 md:h-10 md:w-10"
+                                        style={tech.invert ? { filter: "brightness(0) invert(1)" } : undefined}
+                                        loading="lazy"
+                                    />
+                                )}
+                            </div>
+                        </TechHoverCard>
+                    ))}
+                </div>
+            ))}
+        </div>
     );
 };
 
